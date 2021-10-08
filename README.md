@@ -1,12 +1,20 @@
 [![Open in Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/theodorosploumis/gitpod-drupal-workspace)
 
-![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/tplcom/gitpod-drupal-workspace/latest?label=docker%20image)
-
 # Gitpod Drupal workspace
 An opinionated Docker image you can use with Gitpod.io. Focused on Drupal 9.x development.
 
+## Docker image
+- [tplcom/gitpod-drupal-workspace](https://hub.docker.com/r/tplcom/gitpod-drupal-workspace)
 
-## Software
+## Usage
+
+On your `.gitpod.yml` file use:
+
+```
+image: tplcom/gitpod-drupal-workspace:latest
+```
+
+## Software installed
 
 - [composer 2.x](https://getcomposer.org)
 - [ddev](https://ddev.readthedocs.io/en)
@@ -26,4 +34,4 @@ An opinionated Docker image you can use with Gitpod.io. Focused on Drupal 9.x de
 
 ## Licence
 
-[MIT](LICENSE)
+- [MIT](LICENSE) 2021
