@@ -1,0 +1,8 @@
+.vscode/
+.ddev
+.lando.*
+composer.*
+/vendor/
+/web/
+.editorconfig
+.gitattributes
