@@ -13,6 +13,8 @@ An opinionated Docker image you can use with Gitpod.io. Focused on Drupal 9.x de
 - drupalorg-cli
 - scm_breeze
 - husky
+- rsync
+- sass
 - szeidler/composer-patches-cli
 - ergebnis/composer-normalize
 - roave/security-advisories
