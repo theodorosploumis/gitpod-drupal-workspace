@@ -1,2 +1,23 @@
-# gitpod-drupal-image
-An opinionated Docker image you can use with Gitpod.io for Drupal + ddev/lando +composer 2.x
+# Gitpod Drupal workspace
+An opinionated Docker image you can use with Gitpod.io. Focused on Drupal 9.x development.
+
+
+## Software
+
+- composer 2.x
+- ddev
+- lando
+- drush-launcher
+- deployer
+- robo
+- drupalorg-cli
+- scm_breeze
+- husky
+- szeidler/composer-patches-cli
+- ergebnis/composer-normalize
+- roave/security-advisories
+
+
+## Licence
+
+[MIT](LICENSE)
