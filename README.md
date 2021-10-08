@@ -1,7 +1,7 @@
 [![Open in Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/theodorosploumis/gitpod-drupal-workspace)
 
 # Gitpod Drupal workspace
-An opinionated Docker image you can use with [Gitpod.io](https://www.gitpod.io/). 
+An opinionated Docker image you can use with [Gitpod.io](https://www.gitpod.io/).
 Focused on **Drupal** 8+ development.
 
 ## Docker image
@@ -23,6 +23,7 @@ image: tplcom/gitpod-drupal-workspace
 - [drush-launcher](https://github.com/drush-ops/drush-launcher)
 - [deployer](https://deployer.org)
 - [robo](https://robo.li)
+- [phpcbf.phar, phpcs.phar](https://github.com/squizlabs/PHP_CodeSniffer)
 - [drupalorg-cli](https://github.com/mglaman/drupalorg-cli)
 - [scm_breeze](https://github.com/scmbreeze/scm_breeze)
 - [husky](https://github.com/typicode/husky)

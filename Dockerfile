@@ -51,6 +51,16 @@ RUN composer global require \
 		ergebnis/composer-normalize \
 		roave/security-advisories:dev-latest
 
+# Install phpcs
+RUN sudo wget https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && \
+    sudo chmod +x phpcs.phar && \
+    sudo mv phpcs.phar /usr/local/bin/phpcs
+
+# Install phpcbf
+RUN sudo wget https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar && \
+    sudo chmod +x phpcbf.phar && \
+    sudo mv phpcbf.phar /usr/local/bin/phpcbf
+
 # Install ddev
 RUN brew update && brew install drud/ddev/ddev && mkcert -install
 
