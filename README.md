@@ -12,7 +12,7 @@ Focused on **Drupal** 8+ development.
 Simply, on your `.gitpod.yml` file use this image:
 
 ```Dockerfile
-image: tplcom/gitpod-drupal-workspace:latest
+image: tplcom/gitpod-drupal-workspace
 ```
 
 ## Software installed
