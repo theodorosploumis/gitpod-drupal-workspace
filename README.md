@@ -1,16 +1,17 @@
 [![Open in Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/theodorosploumis/gitpod-drupal-workspace)
 
 # Gitpod Drupal workspace
-An opinionated Docker image you can use with Gitpod.io. Focused on Drupal 9.x development.
+An opinionated Docker image you can use with [Gitpod.io](https://www.gitpod.io/). 
+Focused on **Drupal** 8+ development.
 
 ## Docker image
 - [tplcom/gitpod-drupal-workspace](https://hub.docker.com/r/tplcom/gitpod-drupal-workspace)
 
 ## Usage
 
-On your `.gitpod.yml` file use:
+Simply, on your `.gitpod.yml` file use this image:
 
-```
+```Dockerfile
 image: tplcom/gitpod-drupal-workspace:latest
 ```
 
