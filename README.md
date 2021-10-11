@@ -44,19 +44,12 @@ Composer packages:
 
 Nodejs packages:
 
-- [artilleryio/artillery](https://github.com/artilleryio/artillery)
-- [flood-io/element (cli)](https://github.com/flood-io/element)
+- [artilleryio/artillery (load testing)](https://github.com/artilleryio/artillery)
+- [flood-io/element (load testing)](https://github.com/flood-io/element)
 - [grunt-cli](https://gruntjs.com)
 - [gulp-cli](https://gulpjs.com)
 - [typicode/husky](https://github.com/typicode/husky)
 - [yeoman](https://yeoman.io)
-
-Go packages:
-
-- [grafana/k6 (load testing)](https://github.com/grafana/k6)
-- [six-ddc/plow (load testing)](https://github.com/six-ddc/plow)
-- [Blazemeter/taurus (load testing)](https://github.com/Blazemeter/taurus)
-- [tsenart/vegeta (load testing)](https://github.com/tsenart/vegeta)
 
 Other tools:
 

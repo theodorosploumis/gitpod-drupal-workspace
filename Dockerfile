@@ -73,9 +73,9 @@ RUN npm install -g \
 	yo
 
 # Install python packages
-# RUN sudo ~/.pyenv/shims/python -m pip install \
-# 	ansible \
-# 	bzt
+RUN sudo ~/.pyenv/shims/python -m pip install \
+	ansible \
+	bzt
 
 # Install global composer packages
 RUN composer global require \
@@ -93,11 +93,8 @@ RUN sudo wget https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar && \
     sudo chmod +x phpcbf.phar && \
     sudo mv phpcbf.phar /usr/local/bin/phpcbf
 
-# Install brew packages
+# Install brew packages like ddev
 RUN brew update && brew install \
-	k6 \
-	vegeta \
-	plow \
 	drud/ddev/ddev
 
 RUN mkcert -install
