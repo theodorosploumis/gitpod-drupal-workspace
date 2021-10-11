@@ -23,16 +23,21 @@ image: tplcom/gitpod-drupal-workspace
 - [drush-launcher](https://github.com/drush-ops/drush-launcher)
 - [deployer](https://deployer.org)
 - [robo](https://robo.li)
+- [phpbrew](https://github.com/phpbrew/phpbrew)
 - [phpcbf.phar, phpcs.phar](https://github.com/squizlabs/PHP_CodeSniffer)
 - [drupalorg-cli](https://github.com/mglaman/drupalorg-cli)
 - [scm_breeze](https://github.com/scmbreeze/scm_breeze)
 - [husky](https://github.com/typicode/husky)
-- [rsync](https://rsync.samba.org/)
-- [sass](https://sass-lang.com/)
+- [rsync](https://rsync.samba.org)
+- [screen](http://www.gnu.org/software/screen)
+- [tmux](https://github.com/tmux/tmux)
+- [capistrano](https://capistranorb.com)
+- [ansible](https://docs.ansible.com)
+- [teamocil](https://github.com/remi/teamocil)
+- [sass](https://sass-lang.com)
 - [szeidler/composer-patches-cli](https://github.com/szeidler/composer-patches-cli)
 - [ergebnis/composer-normalize](https://github.com/ergebnis/composer-normalize)
 - [roave/security-advisories](https://github.com/Roave/SecurityAdvisories)
-
 
 ## Licence
 

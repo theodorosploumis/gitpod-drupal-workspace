@@ -8,7 +8,14 @@ SHELL ["/bin/bash", "-c"]
 
 RUN sudo apt-get -qq update && sudo apt-get install -y \
 		rsync \
+		screen \
+		tmux \
 		sass
+
+# Install ruby gems
+RUN gem install \
+		teamocil \
+		capistrano
 
 # Install composer 2.x (replace existing)
 RUN sudo wget -q https://getcomposer.org/download/${COMPOSER}/composer.phar && \
@@ -41,11 +48,22 @@ RUN sudo curl -LO https://deployer.org/deployer.phar && \
 		sudo chmod +x deployer.phar && \
 		sudo mv deployer.phar /usr/local/bin/dep
 
-# Install several development tools
+# Install phpbrew
+RUN sudo curl -LO https://github.com/phpbrew/phpbrew/releases/latest/download/phpbrew.phar && \
+ 		sudo chmod +x phpbrew.phar && \
+		sudo mv phpbrew.phar /usr/local/bin/phpbrew && \
+		echo -e "[[ -e ~/.phpbrew/bashrc ]]" > ~/.bashrc && \
+		echo -e "[[ -e ~/.phpbrew/zshrc ]]" > .zshrc
+
+# Install npm packages
 RUN npm install -g \
 		husky
 
-# Install composer global tools
+# Install python packages
+RUN python -m pip install --user \
+		ansible
+
+# Install global composer packages
 RUN composer global require \
 		szeidler/composer-patches-cli \
 		ergebnis/composer-normalize \
