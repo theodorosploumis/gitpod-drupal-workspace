@@ -62,10 +62,12 @@ Nodejs packages:
 Other tools:
 
 - [ansible](https://docs.ansible.com)
+- [brew (inherited from base image)](https://brew.sh/)
 - [bzt (Taurus testing)](https://gettaurus.org)
 - [capistrano](https://capistranorb.com)
 - [git-crypt](https://github.com/AGWA/git-crypt)
 - [git-svn](https://git-scm.com/docs/git-svn)
+- [k6 (load testing)](https://github.com/grafana/k6)
 - [remi/teamocil](https://github.com/remi/teamocil)
 - [rsync](https://rsync.samba.org)
 - [sass](https://sass-lang.com)

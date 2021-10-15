@@ -121,9 +121,10 @@ RUN git clone git://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze && \
     source ~/.bashrc && \
     source ~/.zshrc
 
-# Install brew packages like ddev
+# Install brew packages
 RUN brew update && brew install \
-	drud/ddev/ddev
+	drud/ddev/ddev \
+	k6
 
 RUN mkcert -install
 
