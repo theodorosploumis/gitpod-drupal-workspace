@@ -9,5 +9,5 @@ workflows:
             docker-username: USER
             image: tplcom/gitpod-drupal-workspace 
             tag: latest 
-            update-description: true 
+            update-description: false 
             use-docker-credentials-store: true
