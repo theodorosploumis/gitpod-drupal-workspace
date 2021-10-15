@@ -3,7 +3,7 @@ jobs:
   build:
     context: DockerHub
     docker:
-      - image: circleci/buildpack-deps:focal
+      - image: docker:20.10.9
     steps:
       - checkout
       - run: |
