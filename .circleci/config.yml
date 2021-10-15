@@ -3,9 +3,11 @@ jobs:
   build:
     context: DockerHub
     docker:
-      - image: docker:20.10.9
+      - image: circleci/buildpack-deps:focal
     steps:
       - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run: |
           IMAGE='tplcom/gitpod-drupal-workspace'
           TAG='latest'
