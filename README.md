@@ -4,6 +4,9 @@
 An opinionated Docker image you can use with [Gitpod.io](https://www.gitpod.io) as also as any other Docker based development tool.
 Focused on **Drupal** 8+ development.
 
+## Source code
+- [github.com/theodorosploumis/gitpod-drupal-workspace](https://github.com/theodorosploumis/gitpod-drupal-workspace)
+
 ## Docker image
 - [tplcom/gitpod-drupal-workspace](https://hub.docker.com/r/tplcom/gitpod-drupal-workspace)
 
