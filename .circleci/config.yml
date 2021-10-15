@@ -1,12 +1,9 @@
-version: 2.1
-context: DockerHub
-executors:
-  circleci-executor:
-    docker:
-      - image: cimg/base:stable  
+version: 2
 jobs:
-  deploy-docker-image:
-    executor: circleci-executor
+  build:
+    context: DockerHub
+    docker:
+      - image: cimg/base:stable
     steps:
       - checkout
       - run: |
@@ -15,7 +12,3 @@ jobs:
           docker build -t $IMAGE:$TAG .
           echo $docker_hub_pwd | docker login -u $docker_hub_user --password-stdin
           docker push $IMAGE:$TAG
-workflows:
-  docker-hub-workflow:
-    jobs:
-      - deploy-docker-image
