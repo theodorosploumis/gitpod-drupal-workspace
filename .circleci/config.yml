@@ -3,7 +3,7 @@ jobs:
   build:
     context: DockerHub
     docker:
-      - image: cimg/base:stable
+      - image: circleci/buildpack-deps:focal
     steps:
       - checkout
       - run: |
