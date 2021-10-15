@@ -10,6 +10,6 @@ jobs:
       - run: |
           IMAGE='tplcom/gitpod-drupal-workspace'
           TAG='latest'
+          docker login -u $docker_hub_user -p $docker_hub_pwd
           docker build -t $IMAGE:$TAG .
-          echo $docker_hub_pwd | docker login -u $docker_hub_user --password-stdin
           docker push $IMAGE:$TAG
