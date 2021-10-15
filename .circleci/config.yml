@@ -10,5 +10,4 @@ workflows:
             image: tplcom/gitpod-drupal-workspace 
             tag: latest 
             update-description: true 
-            use-docker-credentials-store: true 
-            use-remote-docker: true 
+            use-docker-credentials-store: true
