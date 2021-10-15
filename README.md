@@ -1,7 +1,7 @@
 [![Open in Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/theodorosploumis/gitpod-drupal-workspace)
 
 # Gitpod Drupal workspace
-An opinionated Docker image you can use with [Gitpod.io](https://www.gitpod.io/).
+An opinionated Docker image you can use with [Gitpod.io](https://www.gitpod.io) as also as any other Docker based development tool.
 Focused on **Drupal** 8+ development.
 
 ## Docker image
@@ -26,8 +26,13 @@ Docker environments:
 PHP tools:
 
 - [deployer](https://deployer.org)
+- [GrumPHP](https://github.com/phpro/grumphp)
+- [Magallanes](https://github.com/andres-montanez/Magallanes)
+- [phive](https://github.com/phar-io/phive)
+- [phing](https://www.phing.info)
 - [phpbrew](https://github.com/phpbrew/phpbrew)
-- [phpcbf.phar, phpcs.phar](https://github.com/squizlabs/PHP_CodeSniffer)
+- [phpcbf, phpcs (PHP_CodeSniffer)](https://github.com/squizlabs/PHP_CodeSniffer)
+- [phpmd](https://phpmd.org)
 - [robo](https://robo.li)
 
 Drupal related tools:
@@ -54,6 +59,7 @@ Nodejs packages:
 Other tools:
 
 - [ansible](https://docs.ansible.com)
+- [bzt (Taurus testing)](https://gettaurus.org)
 - [capistrano](https://capistranorb.com)
 - [git-crypt](https://github.com/AGWA/git-crypt)
 - [git-svn](https://git-scm.com/docs/git-svn)
@@ -65,8 +71,7 @@ Other tools:
 - [tmux/tmux](https://github.com/tmux/tmux)
 
 ## ToDo
-
-Add aliases file for composer packages and commands.
+- Print software versions (including software from "gitpod/workspace-full")
 
 ## Licence
 

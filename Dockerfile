@@ -1,9 +1,12 @@
 FROM gitpod/workspace-full
 
-# Setup environment
+# Setup environment (software versions)
 ENV COMPOSER="2.1.9"
+ENV ROBO="3.0.4"
 ENV	DRUPALORG_CLI="0.3.0"
 ENV	DRUPAL_CODE_GENERATOR="2.1.1"
+ENV	GRUMPHP="v1.5.0"
+ENV	COMPOSER_NORMALIZE="2.15.0"
 
 SHELL ["/bin/bash", "-c"]
 
@@ -26,14 +29,14 @@ RUN sudo wget -q https://getcomposer.org/download/${COMPOSER}/composer.phar && \
     echo "export PATH=\"\$HOME/.composer/vendor/bin:\$PATH\"" >>  ~/.bashrc && \
     echo "export PATH=\"\$HOME/.composer/vendor/bin:\$PATH\"" >>  ~/.zshrc
 
-# Install scm_breeze
-RUN git clone git://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze && \
-    ~/.scm_breeze/install.sh && \
-    source ~/.bashrc && \
-    source ~/.zshrc
+# Install global composer packages
+RUN composer global require \
+	szeidler/composer-patches-cli \
+	tightenco/takeout \
+	andres-montanez/magallanes
 
 # Install robo
-RUN sudo wget http://robo.li/robo.phar && \
+RUN sudo wget https://github.com/consolidation/Robo/releases/download/${ROBO}/robo.phar && \
     sudo chmod +x robo.phar && \
     sudo mv robo.phar /usr/bin/robo
 
@@ -57,6 +60,41 @@ RUN sudo curl -LO https://deployer.org/deployer.phar && \
 	sudo chmod +x deployer.phar && \
 	sudo mv deployer.phar /usr/local/bin/dep
 
+# Install phpcs
+RUN sudo wget https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && \
+    sudo chmod +x phpcs.phar && \
+    sudo mv phpcs.phar /usr/local/bin/phpcs
+
+# Install phpcbf
+RUN sudo wget https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar && \
+    sudo chmod +x phpcbf.phar && \
+    sudo mv phpcbf.phar /usr/local/bin/phpcbf
+
+# Install phive
+RUN sudo wget https://phar.io/releases/phive.phar && \
+	sudo chmod +x phive.phar && \
+	sudo mv phive.phar /usr/local/bin/phive
+
+# Install phing
+RUN sudo wget https://www.phing.info/get/phing-latest.phar && \
+	sudo chmod +x phing-latest.phar && \
+	sudo mv phing-latest.phar /usr/local/bin/phing
+
+# Install phpmd
+RUN sudo wget https://phpmd.org/static/latest/phpmd.phar && \
+	sudo chmod +x phpmd.phar && \
+	sudo mv phpmd.phar /usr/local/bin/phpmd
+
+# Install grumphp
+RUN sudo wget https://github.com/phpro/grumphp/releases/download/${GRUMPHP}/grumphp.phar && \
+	sudo chmod +x grumphp.phar && \
+	sudo mv grumphp.phar /usr/local/bin/grumphp
+
+# Install composer-normalize
+RUN sudo wget https://github.com/ergebnis/composer-normalize/releases/download/${COMPOSER_NORMALIZE}/composer-normalize.phar && \
+	sudo chmod +x composer-normalize.phar && \
+	sudo mv composer-normalize.phar /usr/local/bin/composer-normalize
+
 # Install phpbrew
 RUN sudo curl -LO https://github.com/phpbrew/phpbrew/releases/latest/download/phpbrew.phar && \
  	sudo chmod +x phpbrew.phar && \
@@ -77,21 +115,11 @@ RUN sudo ~/.pyenv/shims/python -m pip install \
 	ansible \
 	bzt
 
-# Install global composer packages
-RUN composer global require \
-	szeidler/composer-patches-cli \
-	ergebnis/composer-normalize \
-	tightenco/takeout
-
-# Install phpcs
-RUN sudo wget https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && \
-    sudo chmod +x phpcs.phar && \
-    sudo mv phpcs.phar /usr/local/bin/phpcs
-
-# Install phpcbf
-RUN sudo wget https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar && \
-    sudo chmod +x phpcbf.phar && \
-    sudo mv phpcbf.phar /usr/local/bin/phpcbf
+# Install scm_breeze
+RUN git clone git://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze && \
+    ~/.scm_breeze/install.sh && \
+    source ~/.bashrc && \
+    source ~/.zshrc
 
 # Install brew packages like ddev
 RUN brew update && brew install \
