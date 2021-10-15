@@ -134,4 +134,5 @@ RUN sudo wget https://files.lando.dev/installer/lando-x64-stable.deb && \
 	mkdir -p ~/.lando && \
 	echo -e "proxy: 'ON'\nproxyHttpPort: '8080'\nproxyHttpsPort: '4443'\nbindAddress: '0.0.0.0'\nproxyBindAddress: '0.0.0.0'" > ~/.lando/config.yml
 
-# ToDo: Add aliases file for composer packages and commands
+# Add aliases
+ADD .bash_aliases /home/gitpod
