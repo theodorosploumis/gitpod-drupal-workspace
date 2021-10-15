@@ -1,18 +1,14 @@
-version: 2
-jobs:
-  build:
-    context: DockerHub
-    docker:
-      - image: circleci/buildpack-deps:focal
-        auth:
-          username: $docker_hub_user
-          password: $docker_hub_pwd
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run: |
-          IMAGE='tplcom/gitpod-drupal-workspace'
-          TAG='latest'
-          echo "$docker_hub_pwd" | docker login --username $docker_hub_user --password-stdin
-          docker build -t $IMAGE:$TAG .
-          docker push $IMAGE:$TAG
+version: 2.1
+orbs:
+  docker: circleci/docker@1.7.0
+workflows:
+    deploy-docker-hub:
+      jobs:
+        - docker/publish:
+            docker-password: PASSWORD
+            docker-username: USER
+            image: tplcom/gitpod-drupal-workspace 
+            tag: latest 
+            update-description: true 
+            use-docker-credentials-store: true 
+            use-remote-docker: true 
