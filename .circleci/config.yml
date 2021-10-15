@@ -4,6 +4,9 @@ jobs:
     context: DockerHub
     docker:
       - image: circleci/buildpack-deps:focal
+        auth:
+          username: $docker_hub_user
+          password: $docker_hub_pwd
     steps:
       - checkout
       - setup_remote_docker
