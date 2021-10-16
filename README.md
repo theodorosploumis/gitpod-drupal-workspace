@@ -24,7 +24,6 @@ Docker environments:
 
 - [ddev](https://ddev.readthedocs.io/en)
 - [lando](https://docs.lando.dev)
-- [tightenco/takeout](https://github.com/tighten/takeout)
 
 PHP tools:
 
@@ -49,6 +48,8 @@ Composer packages:
 - [composer 2.x](https://getcomposer.org)
 - [ergebnis/composer-normalize](https://github.com/ergebnis/composer-normalize)
 - [szeidler/composer-patches-cli](https://github.com/szeidler/composer-patches-cli)
+- [consolidation/cgr](https://github.com/consolidation/cgr)
+- [tightenco/takeout (docker scaffolding)](https://github.com/tighten/takeout)
 
 Nodejs packages:
 
@@ -76,6 +77,7 @@ Other tools:
 - [tmux/tmux](https://github.com/tmux/tmux)
 
 ## ToDo
+
 - Print software versions (including software from "gitpod/workspace-full")
 
 ## Licence

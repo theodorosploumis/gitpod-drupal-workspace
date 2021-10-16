@@ -26,14 +26,15 @@ RUN sudo gem install \
 RUN sudo wget -q https://getcomposer.org/download/${COMPOSER}/composer.phar && \
     sudo chmod +x composer.phar && \
     sudo mv composer.phar /usr/bin/composer && \
-    echo "export PATH=\"\$HOME/.composer/vendor/bin:\$PATH\"" >>  ~/.bashrc && \
-    echo "export PATH=\"\$HOME/.composer/vendor/bin:\$PATH\"" >>  ~/.zshrc
+    echo "export PATH=\"\$HOME/.config/composer/vendor/bin:\$PATH\"" >>  ~/.bashrc && \
+    echo "export PATH=\"\$HOME/.config/composer/vendor/bin:\$PATH\"" >>  ~/.zshrc
 
 # Install global composer packages
 RUN composer global require \
 	szeidler/composer-patches-cli \
 	tightenco/takeout \
-	andres-montanez/magallanes
+	andres-montanez/magallanes \
+	consolidation/cgr
 
 # Install robo
 RUN sudo wget https://github.com/consolidation/Robo/releases/download/${ROBO}/robo.phar && \
