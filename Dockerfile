@@ -3,7 +3,7 @@ FROM gitpod/workspace-full
 # Setup environment (software versions)
 ENV COMPOSER="2.1.9"
 ENV ROBO="3.0.4"
-ENV	DRUPALORG_CLI="0.3.0"
+ENV	DRUPALORG_CLI="0.3.2"
 ENV	DRUPAL_CODE_GENERATOR="2.1.1"
 ENV	GRUMPHP="v1.5.0"
 ENV	COMPOSER_NORMALIZE="2.15.0"
