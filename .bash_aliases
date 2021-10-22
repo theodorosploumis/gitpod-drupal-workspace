@@ -1,3 +1,5 @@
+source
+
 # Basic aliases
 alias update="sudo apt-get update"
 alias upgrade="sudo apt-get upgrade"
@@ -22,8 +24,12 @@ alias dvd="ddev drush"
 alias dvc="ddev composer"
 
 # Composer packages commands
+alias cgr="~/.config/composer/vendor/bin/cgr"
 alias takeout="~/.config/composer/vendor/bin/takeout"
 alias mage="~/.config/composer/vendor/bin/mage"
+alias dgc="~/.config/composer/vendor/bin/dcg"
+alias drupal-check="~/.config/composer/vendor/bin/drupal-check"
+alias phpstan"~/.config/composer/vendor/bin/phpstan"
 
 # Aliases Git
 alias st="gs"
@@ -137,4 +143,18 @@ function docker-bash() {
 function docker-pull-all(){
   echo -n "Pulling all images... That may need time.\n"
   docker images | awk '(NR>1) && ($2!~/none/) {print $1":"$2}' | xargs -L1 docker pull
+}
+
+################
+
+# Commands to help with CI/CD
+alias ci-build="docker build . -t tplcom/gitpod-drupal-workspace"
+alias ci-ssh="docker run -ti tplcom/gitpod-drupal-workspace bash"
+alias ci-push="docker push tplcom/gitpod-drupal-workspace:latest"
+
+function commands(){
+  for line in $(cat ~/commands.md)
+  do
+    echo -e $line
+  done
 }
