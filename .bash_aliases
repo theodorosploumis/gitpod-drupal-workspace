@@ -29,7 +29,7 @@ alias takeout="~/.config/composer/vendor/bin/takeout"
 alias mage="~/.config/composer/vendor/bin/mage"
 alias dgc="~/.config/composer/vendor/bin/dcg"
 alias drupal-check="~/.config/composer/vendor/bin/drupal-check"
-alias phpstan"~/.config/composer/vendor/bin/phpstan"
+alias phpstan="~/.config/composer/vendor/bin/phpstan"
 
 # Aliases Git
 alias st="gs"
