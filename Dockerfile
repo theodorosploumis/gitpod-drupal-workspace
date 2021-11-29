@@ -12,15 +12,20 @@ ENV PHAN="5.2.1"
 ENV PHPMETRICS="v2.7.3"
 ENV ROBO="3.0.4"
 
+ENV PHPBREW_SET_PROMPT=1
+
 SHELL ["/bin/bash", "-c"]
 
-RUN sudo apt-get -qq update && sudo apt-get install -y \
+RUN sudo apt-get -qq update && sudo apt-get install --no-install-recommends -y \
 	ansible \
 	rsync \
 	git-svn \
 	screen \
 	tmux \
-	sass
+	sass \
+	libzip-dev \
+	libonig-dev \
+	php-pear
 
 # Install ruby gems
 RUN gem install --user-install --quiet \
@@ -146,9 +151,18 @@ RUN sudo wget --quiet https://github.com/ergebnis/composer-normalize/releases/do
 # Install phpbrew
 RUN sudo wget --quiet https://github.com/phpbrew/phpbrew/releases/latest/download/phpbrew.phar && \
  	sudo chmod +x phpbrew.phar && \
-	sudo mv phpbrew.phar /usr/local/bin/phpbrew && \
-	echo -e "[[ -e ~/.phpbrew/bashrc ]]" >> ~/.bashrc && \
-	echo -e "[[ -e ~/.phpbrew/zshrc ]]" >> .zshrc
+	sudo mv phpbrew.phar /usr/bin/phpbrew && \
+	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.bashrc && \
+	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.zshrc
+
+# Install php8 with phpbrew
+RUN sudo mkdir -p /opt/phpbrew && sudo chmod -R 777 /opt/phpbrew && sudo chown gitpod /opt/phpbrew && \
+	phpbrew init --root=/opt/phpbrew && \
+	phpbrew install php-8.0.13 as php-8 +default +mbstring +gd
+
+RUN source ~/.phpbrew/bashrc && \
+	phpbrew switch php-8 && \
+	phpbrew ext install gd
 
 # Install wp-cli
 RUN sudo wget --quiet https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
