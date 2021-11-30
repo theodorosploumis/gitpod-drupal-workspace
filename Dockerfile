@@ -152,17 +152,16 @@ RUN sudo wget --quiet https://github.com/ergebnis/composer-normalize/releases/do
 RUN sudo wget --quiet https://github.com/phpbrew/phpbrew/releases/latest/download/phpbrew.phar && \
  	sudo chmod +x phpbrew.phar && \
 	sudo mv phpbrew.phar /usr/bin/phpbrew && \
-	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.bashrc && \
+	echo -e "export PHPBREW_SET_PROMPT=0" >> ~/.bashrc && \
+	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.zshrc && \
+	echo -e "export PHPBREW_SET_PROMPT=0" >> ~/.zshrc && \
 	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.zshrc
 
 # Install php8 with phpbrew
 RUN sudo mkdir -p /opt/phpbrew && sudo chmod -R 777 /opt/phpbrew && sudo chown gitpod /opt/phpbrew && \
 	phpbrew init --root=/opt/phpbrew && \
-	phpbrew install php-8.0.13 as php-8 +default +mbstring +gd
-
-RUN source ~/.phpbrew/bashrc && \
-	phpbrew switch php-8 && \
-	phpbrew ext install gd
+	phpbrew install php-8.0.13 as php-8 +default +gd && \
+	phpbrew install php-7.4.26 as php-7 +default +gd
 
 # Install wp-cli
 RUN sudo wget --quiet https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
