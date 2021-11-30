@@ -153,7 +153,7 @@ RUN sudo wget --quiet https://github.com/phpbrew/phpbrew/releases/latest/downloa
  	sudo chmod +x phpbrew.phar && \
 	sudo mv phpbrew.phar /usr/bin/phpbrew && \
 	echo -e "export PHPBREW_SET_PROMPT=0" >> ~/.bashrc && \
-	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.zshrc && \
+	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.bashrc && \
 	echo -e "export PHPBREW_SET_PROMPT=0" >> ~/.zshrc && \
 	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.zshrc
 
