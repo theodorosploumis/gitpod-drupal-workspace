@@ -53,7 +53,7 @@ Drupal related tools:
 - [drush-launcher](https://github.com/drush-ops/drush-launcher)
 - [drupalorg-cli](https://github.com/mglaman/drupalorg-cli)
 
-Composer packages:
+Composer packages (global):
 
 - [composer 2.x](https://getcomposer.org)
 - [consolidation/cgr](https://github.com/consolidation/cgr)
@@ -62,13 +62,14 @@ Composer packages:
 - [szeidler/composer-patches-cli](https://github.com/szeidler/composer-patches-cli)
 - [tightenco/takeout (docker scaffolding)](https://github.com/tighten/takeout)
 
-Nodejs packages:
+Nodejs packages (global):
 
 - [artilleryio/artillery (load testing)](https://github.com/artilleryio/artillery)
 - [flood-io/element (load testing)](https://github.com/flood-io/element)
 - [grunt-cli](https://gruntjs.com)
 - [gulp-cli](https://gulpjs.com)
 - [husky](https://github.com/typicode/husky)
+- [nightwatch](https://nightwatchjs.org)
 - [yeoman](https://yeoman.io)
 
 Python packages:
@@ -79,7 +80,7 @@ Python packages:
 Other tools:
 
 - [ansible](https://docs.ansible.com)
-- [brew (inherited from base image)](https://brew.sh/)
+- [brew (inherited from base image)](https://brew.sh)
 - [capistrano](https://capistranorb.com)
 - [git-crypt](https://github.com/AGWA/git-crypt)
 - [git-svn](https://git-scm.com/docs/git-svn)

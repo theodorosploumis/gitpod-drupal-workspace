@@ -9,6 +9,9 @@ ENV	DRUPALORG_CLI="0.3.2"
 ENV	DRUPAL_CODE_GENERATOR="2.2.0"
 ENV	GRUMPHP="v1.5.0"
 ENV PHAN="5.2.1"
+ENV PHPBREW="1.27.0"
+ENV PHP7="php-7.4.26"
+ENV PHP8="php-8.0.13"
 ENV PHPMETRICS="v2.7.3"
 ENV ROBO="3.0.4"
 
@@ -26,6 +29,35 @@ RUN sudo apt-get -qq update && sudo apt-get install --no-install-recommends -y \
 	libzip-dev \
 	libonig-dev \
 	php-pear
+
+# Install brew packages
+RUN brew update && brew install \
+	drud/ddev/ddev \
+	k6
+
+RUN mkcert -install
+
+# Install lando
+RUN sudo wget --quiet https://files.lando.dev/installer/lando-x64-stable.deb && \
+	sudo dpkg -i --ignore-depends docker-ce,iptables lando-x64-stable.deb && \
+	sudo rm -rf lando-x64-stable.deb && \
+	mkdir -p ~/.lando && \
+	echo -e "proxy: 'ON'\nproxyHttpPort: '8080'\nproxyHttpsPort: '4443'\nbindAddress: '0.0.0.0'\nproxyBindAddress: '0.0.0.0'" > ~/.lando/config.yml
+
+# Install phpbrew
+RUN sudo wget --quiet https://github.com/phpbrew/phpbrew/releases/download/${PHPBREW}/phpbrew.phar && \
+ 	sudo chmod +x phpbrew.phar && \
+	sudo mv phpbrew.phar /usr/bin/phpbrew && \
+	echo -e "export PHPBREW_SET_PROMPT=0" >> ~/.bashrc && \
+	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.bashrc && \
+	echo -e "export PHPBREW_SET_PROMPT=0" >> ~/.zshrc && \
+	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.zshrc
+
+# Install php8 with phpbrew
+RUN sudo mkdir -p /opt/phpbrew && sudo chmod -R 777 /opt/phpbrew && sudo chown gitpod /opt/phpbrew && \
+	phpbrew init --root=/opt/phpbrew && \
+	phpbrew install "${PHP8}" as php-8 +default +gd && \
+	phpbrew install "${PHP7}" as php-7 +default +gd
 
 # Install ruby gems
 RUN gem install --user-install --quiet \
@@ -148,21 +180,6 @@ RUN sudo wget --quiet https://github.com/ergebnis/composer-normalize/releases/do
 	sudo chmod +x composer-normalize.phar && \
 	sudo mv composer-normalize.phar /usr/local/bin/composer-normalize
 
-# Install phpbrew
-RUN sudo wget --quiet https://github.com/phpbrew/phpbrew/releases/latest/download/phpbrew.phar && \
- 	sudo chmod +x phpbrew.phar && \
-	sudo mv phpbrew.phar /usr/bin/phpbrew && \
-	echo -e "export PHPBREW_SET_PROMPT=0" >> ~/.bashrc && \
-	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.bashrc && \
-	echo -e "export PHPBREW_SET_PROMPT=0" >> ~/.zshrc && \
-	echo -e "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.zshrc
-
-# Install php8 with phpbrew
-RUN sudo mkdir -p /opt/phpbrew && sudo chmod -R 777 /opt/phpbrew && sudo chown gitpod /opt/phpbrew && \
-	phpbrew init --root=/opt/phpbrew && \
-	phpbrew install php-8.0.13 as php-8 +default +gd && \
-	phpbrew install php-7.4.26 as php-7 +default +gd
-
 # Install wp-cli
 RUN sudo wget --quiet https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
  	sudo chmod +x wp-cli.phar && \
@@ -170,10 +187,11 @@ RUN sudo wget --quiet https://raw.githubusercontent.com/wp-cli/builds/gh-pages/p
 
 # Install npm packages
 RUN npm install -g --quiet \
-	husky \
 	artillery \
 	grunt-cli \
 	gulp-cli \
+	husky \
+	nightwatch \
 	yo
 
 # Install python packages
@@ -192,20 +210,6 @@ RUN curl -o ~/z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh && \
 	chmod +x ~/z.sh && \
 	echo -e ". ~/z.sh" >> ~/.bashrc && \
 	echo -e ". ~/z.sh" >> .zshrc
-
-# Install brew packages
-RUN brew update && brew install \
-	drud/ddev/ddev \
-	k6
-
-RUN mkcert -install
-
-# Install lando
-RUN sudo wget --quiet https://files.lando.dev/installer/lando-x64-stable.deb && \
-	sudo dpkg -i --ignore-depends docker-ce,iptables lando-x64-stable.deb && \
-	sudo rm -rf lando-x64-stable.deb && \
-	mkdir -p ~/.lando && \
-	echo -e "proxy: 'ON'\nproxyHttpPort: '8080'\nproxyHttpsPort: '4443'\nbindAddress: '0.0.0.0'\nproxyBindAddress: '0.0.0.0'" > ~/.lando/config.yml
 
 # Copy files we need
 ADD .bash_aliases commands.md /home/gitpod/
