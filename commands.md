@@ -32,6 +32,7 @@
 - node
 - npm
 - nvm
+- mysql
 - phan
 - phar
 - phing

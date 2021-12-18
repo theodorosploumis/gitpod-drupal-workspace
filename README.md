@@ -85,6 +85,7 @@ Other tools:
 - [git-crypt](https://github.com/AGWA/git-crypt)
 - [git-svn](https://git-scm.com/docs/git-svn)
 - [k6 (load testing)](https://github.com/grafana/k6)
+- [mysql 8](https://www.mysql.com)
 - [remi/teamocil](https://github.com/remi/teamocil)
 - [rsync](https://rsync.samba.org)
 - [rupa/z](https://github.com/rupa/z)

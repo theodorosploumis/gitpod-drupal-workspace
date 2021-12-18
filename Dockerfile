@@ -1,4 +1,4 @@
-FROM gitpod/workspace-full
+FROM gitpod/workspace-mysql-8
 
 # Setup environment (software versions)
 ENV BEHAT="v3.9.0"
